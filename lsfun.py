@@ -4,7 +4,8 @@
 Basic usage is to call this from a shell function which pipes in the current defined shell functions,
 with something like declare -f. We then parse the lines, and print docs. The format for the shell
 function is a line starting with ": doc " (i.e. a colon, a space, 'doc' and a space).
-The remainder of the line is the doc, which really ought to be a summary."""
+The remainder of the line is the doc, which really ought to be a summary.
+Copyright 2019 David C. Todd. License for reuse: GPL version 2. """
 
 # Requirements:
 # 1. Take a stream of data from stdin
@@ -20,6 +21,7 @@ import os
 import argparse
 import re
 
+_version = "0.1"
 # set up options parser
 p = argparse.ArgumentParser()
 p.add_argument("-f", "--inputfile", type=str, dest="infile", default="-")
