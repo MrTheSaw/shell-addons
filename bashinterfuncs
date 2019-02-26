@@ -1,0 +1,71 @@
+#!/bin/bash
+#Bash interactive functions.
+
+
+
+wla ()
+{
+    : doc "Add email address to spamassassin white list."
+
+    echo whitelist_from $1 >> ~/.spamassassin/user_prefs ;
+}
+
+nalias ()
+## Add an alias to .alias (sourced in .profile), and the current session
+{
+    : doc "Add an alias to .alias, (sourced in .profile) , and the current session"
+						       
+    alias $1="$2" && echo "alias $1='$2'" >> ~/.alias
+}
+
+#find every file name starting with $1, get the part of its filename
+#that starts after the first '.', then change the first part to $2.
+# For instance, foo.bar, foo.baz, and foo.bar.baz
+massmv ()
+## rename files starting matching $1.* to $2 and the suffix from the old file.
+{
+    : doc "Rename files starting matching $1.* to $2 and the suffix from the old file."
+	if (($# != 2)); then echo "must have two parameters"; return 1; fi
+	for i in $1.*;
+	  do
+	  suf=`echo $i | cut -d . -f 2-`;
+	  mv $i $2.$suf;
+	done
+}
+
+uz ()
+## Unzip a file into a (created?) directory called the filename minus .zip
+{
+    : doc "Unzip a file into a (created?) directory called the filename minus .zip"
+    
+	dir=`basename $1 .zip`;
+	mkdir $dir;
+	mv $1 $dir;
+	cd $dir;
+	unzip $1;
+	cd ..;
+	ls -l $dir
+}
+
+les ()
+## If the argument is a directory list it, otherwise less it.
+{
+    : doc "If the argument is a directory list it, otherwise less it."
+	if (($# == 0)); then ls;
+	elif /usr/bin/test -d $1; then ls $1;
+	else less $1;
+	fi
+}
+grwl ()
+## grep the spamassassin prefs file (which holds the whitelist)
+{
+    : doc "Grep the spamassassin prefs file (which holds the whitelist)"
+    grep $1 ~/.spamassassin/user_prefs
+}
+
+lsfunc ()
+{
+    : doc "List functions with docstrings, if there is a doc"
+
+    declare -f | lsfunc.py
+}
