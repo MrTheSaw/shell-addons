@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 -i
+#!/usr/bin/env python3
 
 """ lsfun.py: a processor to pretty print shell functions and their docs, if any.
 Basic usage is to call this from a shell function which pipes in the current defined shell functions,
@@ -78,4 +78,4 @@ for line in file:
 
 
 fileout.close()
-sys.exit(0)
+

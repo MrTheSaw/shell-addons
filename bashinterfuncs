@@ -66,6 +66,6 @@ grwl ()
 lsfunc ()
 {
     : doc "List functions with docstrings, if there is a doc"
-
-    declare -f | lsfunc.py
+    : doc "If it has more than one line it'll look like this."
+    declare -f | lsfun.py
 }
