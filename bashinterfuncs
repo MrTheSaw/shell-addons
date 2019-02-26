@@ -11,9 +11,8 @@ wla ()
 }
 
 nalias ()
-## Add an alias to .alias (sourced in .profile), and the current session
 {
-    : doc "Add an alias to .alias, (sourced in .profile) , and the current session"
+    : doc "Add an alias to .alias (sourced in .profile), and the current session"
 						       
     alias $1="$2" && echo "alias $1='$2'" >> ~/.alias
 }
@@ -21,8 +20,12 @@ nalias ()
 #find every file name starting with $1, get the part of its filename
 #that starts after the first '.', then change the first part to $2.
 # For instance, foo.bar, foo.baz, and foo.bar.baz
+# $ ls
+# foo.bar foo.baz foo.fum
+# $ massmv foo pie
+# $ ls
+# pie.bar pie.baz pie.fum
 massmv ()
-## rename files starting matching $1.* to $2 and the suffix from the old file.
 {
     : doc "Rename files starting matching $1.* to $2 and the suffix from the old file."
 	if (($# != 2)); then echo "must have two parameters"; return 1; fi
@@ -34,7 +37,6 @@ massmv ()
 }
 
 uz ()
-## Unzip a file into a (created?) directory called the filename minus .zip
 {
     : doc "Unzip a file into a (created?) directory called the filename minus .zip"
     
@@ -48,7 +50,6 @@ uz ()
 }
 
 les ()
-## If the argument is a directory list it, otherwise less it.
 {
     : doc "If the argument is a directory list it, otherwise less it."
 	if (($# == 0)); then ls;
@@ -57,7 +58,6 @@ les ()
 	fi
 }
 grwl ()
-## grep the spamassassin prefs file (which holds the whitelist)
 {
     : doc "Grep the spamassassin prefs file (which holds the whitelist)"
     grep $1 ~/.spamassassin/user_prefs
