@@ -1,7 +1,7 @@
 #!/bin/bash
 #Bash interactive functions.
-
-
+# Name me something hidden, like ".bashinterfuncs", and source me from .profile
+# Copyright 2019 David C. Todd, License for use: GPL 2.0
 
 wla ()
 {
