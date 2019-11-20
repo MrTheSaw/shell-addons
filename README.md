@@ -1,5 +1,5 @@
 # shell-addons
-Tools related to extending BASH capability.
+Tools related to extending BASH capability. Or, it seems, zsh capability.
 
 **lsfun.py** is a python3 program used by a shell function to show shell functions with have
 some internal documentation. The documentation is added to functions using a line starting with ": doc ".
@@ -10,8 +10,10 @@ I have one at the top level of my home directory i.e. $HOME/bin, which is also a
 I want to supersede some system utility, which is rare.
 
 **bashinterfuncs** is a small collection of convenience functions for bash. They are documented internally,
-and that can be nicely displayed with the program lsfunc.py.
+and that can be nicely displayed with the program lsfunc.py. 
 
 I use these by renaming bashinterfuncs to .bashinterfuncs (hiding it), putting it into my home directory,
 and then I "source" it in my .profile.
+
+You could also name it .zshinterfuncs, and source it in the equivalent zsh profile.
 
