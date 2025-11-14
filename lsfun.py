@@ -28,6 +28,7 @@ p.add_argument("-f", "--inputfile", type=str, dest="infile", default="-")
 p.add_argument("-o", "--outputfile", type=str, dest="outfile", default="-")
 p.add_argument("-r", "--regexp", type=str, dest="regexp", default="")
 p.description = "A shell function doc printer"
+
 # process options
 opt = p.parse_args()
 
@@ -47,7 +48,7 @@ if opt.outfile == "-":
 else:
     fileout = os.open(opt.outfile, os.O_WRONLY | os.O_CREAT)
 
-# Okay, we can see our files, lets compile up the regexp and start
+# Okay, we can see our files, let's compile up the regexp and start
 
 file = filein.read().splitlines(keepends=False)
 
@@ -73,7 +74,10 @@ for line in file:
 
     doc_match = doc_re.match(line)
     if doc_match != None:
-        doc_string += doc_match.group(1).strip('"').rstrip('";') + "\n"
+        if doc_string == "":
+            doc_string += doc_match.group(1).strip('"').rstrip('";') + "\n"
+        else:
+            doc_string += " "*(len(func_name)+2) + doc_match.group(1).strip('"').rstrip('";') + "\n"
         #print(doc_string)
 
 
